@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>イベントアンケート</title>
+<title>アンケートフォーム</title>
 
 <style>
 body {
@@ -56,10 +56,6 @@ button {
   font-size: 16px;
   cursor: pointer;
 }
-
-button:hover {
-  background: #2d8cff;
-}
 </style>
 
 </head>
@@ -67,57 +63,44 @@ button:hover {
 <body>
 
 <div class="header">
-  学校イベントアンケート
+  学校アンケート
 </div>
 
 <div class="container" id="main">
 
   <div class="card">
-    <p>本日はイベントにご参加いただきありがとうございました。<br>
-    以下のアンケートにご協力ください。</p>
+    <p>アンケートにご協力ください。</p>
   </div>
 
-  <!-- ① -->
+  <!-- SNS -->
   <div class="card">
-    <p>① イベントの満足度</p>
-    <label><input type="radio" name="q1"> とても満足</label>
-    <label><input type="radio" name="q1"> 満足</label>
-    <label><input type="radio" name="q1"> 普通</label>
-    <label><input type="radio" name="q1"> 不満</label>
+    <p>① よく利用するSNSは？</p>
+    <label><input type="radio" name="q1"> Instagram</label>
+    <label><input type="radio" name="q1"> X</label>
+    <label><input type="radio" name="q1"> TikTok</label>
   </div>
 
-  <!-- ② -->
+  <!-- 時間 -->
   <div class="card">
-    <p>② 印象に残った内容</p>
-    <label><input type="checkbox"> 展示</label>
-    <label><input type="checkbox"> 発表</label>
-    <label><input type="checkbox"> 体験コーナー</label>
+    <p>② SNSの利用時間</p>
+    <label><input type="radio" name="q2"> 1時間未満</label>
+    <label><input type="radio" name="q2"> 1〜3時間</label>
+    <label><input type="radio" name="q2"> 3時間以上</label>
   </div>
 
-  <!-- ③ -->
+  <!-- メアド -->
   <div class="card">
-    <p>③ 改善してほしい点</p>
-    <input type="text" placeholder="自由にご記入ください">
-  </div>
-
-  <!-- ④（ちょい怪しい） -->
-  <div class="card">
-    <p>④ 今後の案内のためメールアドレスをご入力ください</p>
+    <p>③ 結果共有のためメールアドレスを入力してください</p>
     <input type="text" placeholder="example@email.com">
+    <p style="font-size:12px; color:gray;">
+      ※結果の共有以外には使用しません（デモ）
+    </p>
   </div>
 
-  <!-- ⑤（さらに怪しい） -->
+  <!-- 感想 -->
   <div class="card">
-    <p>⑤ 本人確認のため、使用しているパスワードの形式を教えてください</p>
-    <label><input type="radio" name="q5"> 英数字のみ</label>
-    <label><input type="radio" name="q5"> 英数字＋記号</label>
-    <label><input type="radio" name="q5"> その他</label>
-  </div>
-
-  <!-- ⑥ -->
-  <div class="card">
-    <p>⑥ ご意見・ご感想</p>
-    <input type="text" placeholder="ご自由にご記入ください">
+    <p>④ 感想</p>
+    <input type="text">
   </div>
 
   <div class="card">
@@ -126,7 +109,7 @@ button:hover {
 
 </div>
 
-<!-- 右下注意 -->
+<!-- 注意 -->
 <p style="
   position: fixed;
   bottom: 10px;
@@ -137,21 +120,38 @@ button:hover {
   padding: 5px 8px;
   border-radius: 5px;
 ">
-  ※これはフィッシング対策の学習用デモです
+  ※これは調査用デモページです
 </p>
 
 <script>
 function submitForm() {
-  document.getElementById("main").innerHTML = `
-    <div class="card">
-      <h2>送信完了</h2>
-      <p>ご協力ありがとうございました。</p>
+  document.body.innerHTML = `
+    <div style="
+      height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      background:black;
+      color:white;
+      flex-direction:column;
+      text-align:center;
+    ">
+      <h1 style="color:red; font-size:40px;">
+        ⚠ 注意
+      </h1>
+      <p style="font-size:20px;">
+        あなたは個人情報を入力しました
+      </p>
       <br>
-      <p style="color:red;">
-        ⚠ このアンケートには不審な質問が含まれていました<br><br>
-        ・パスワードに関する質問<br>
-        ・個人情報の不必要な入力要求<br><br>
-        このようなフォームには注意しましょう
+      <p>
+        このようなフォームでは<br>
+        情報を入力しないようにしましょう
+      </p>
+      <br>
+      <p style="color:#aaa; font-size:14px;">
+        ・入力前にURLを確認<br>
+        ・不必要な情報要求に注意<br>
+        ・公式サイトからアクセス
       </p>
     </div>
   `;
