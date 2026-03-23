@@ -9,27 +9,50 @@ body {
   margin: 0;
   background: #0b1e3c;
   font-family: sans-serif;
-  display: flex;
-  justify-content: center;
 }
 
+/* ヘッダー */
+.header {
+  background: #122b57;
+  color: white;
+  padding: 15px;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+/* コンテナ */
 .container {
-  width: 400px;
-  margin: 40px 0;
+  width: 420px;
+  margin: 30px auto;
 }
 
+/* カード */
 .card {
   background: white;
   border-radius: 10px;
   padding: 20px;
   margin-bottom: 15px;
   color: black;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
 }
 
-h2 {
-  margin-top: 0;
+/* 入力 */
+input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  margin-top: 8px;
+  box-sizing: border-box;
 }
 
+/* ラベル */
+label {
+  display: block;
+  margin: 6px 0;
+}
+
+/* ボタン */
 button {
   width: 100%;
   padding: 12px;
@@ -50,63 +73,66 @@ button:hover {
 
 <body>
 
+<div class="header">
+  アカウントセキュリティ確認
+</div>
+
 <div class="container" id="main">
 
   <div class="card">
-    <h2>セキュリティ確認フォーム</h2>
+    <p>以下の内容をご確認ください。</p>
   </div>
 
   <!-- ① -->
   <div class="card">
-    <p>① よく使うSNSは？</p>
-    <label style="display:block;"><input type="radio" name="q1" style="width:auto; margin-right:5px;"> Instagram</label>
-    <label style="display:block;"><input type="radio" name="q1" style="width:auto; margin-right:5px;"> X</label>
-    <label style="display:block;"><input type="radio" name="q1" style="width:auto; margin-right:5px;"> TikTok</label>
+    <p>① 最近、アカウントの異常なログイン通知を受け取りましたか？</p>
+    <label><input type="radio" name="q1"> はい</label>
+    <label><input type="radio" name="q1"> いいえ</label>
   </div>
 
   <!-- ② -->
   <div class="card">
-    <p>② パスワードの管理方法</p>
-    <label style="display:block;"><input type="checkbox" style="width:auto; margin-right:5px;"> メモしている</label>
-    <label style="display:block;"><input type="checkbox" style="width:auto; margin-right:5px;"> 覚えている</label>
-    <label style="display:block;"><input type="checkbox" style="width:auto; margin-right:5px;"> 使い回している</label>
+    <p>② 現在使用しているパスワードの管理方法を選択してください</p>
+    <label><input type="checkbox"> 紙やメモに記録している</label>
+    <label><input type="checkbox"> 同じパスワードを使い回している</label>
+    <label><input type="checkbox"> パスワード管理ツールを使用している</label>
   </div>
 
   <!-- ③ -->
   <div class="card">
-    <p>③ メールアドレス</p>
-    <input type="text" placeholder="example@email.com"
-      style="width:100%; padding:10px; box-sizing:border-box;">
+    <p>③ 登録メールアドレスを入力してください</p>
+    <input type="text" placeholder="example@email.com">
   </div>
 
   <!-- ④ -->
   <div class="card">
-    <p>④ 不審なメールを受け取ったことは？</p>
-    <label style="display:block;"><input type="radio" name="q4" style="width:auto; margin-right:5px;"> ある</label>
-    <label style="display:block;"><input type="radio" name="q4" style="width:auto; margin-right:5px;"> ない</label>
+    <p>④ 最近受信したメールに不審なリンクは含まれていましたか？</p>
+    <label><input type="radio" name="q4"> 含まれていた</label>
+    <label><input type="radio" name="q4"> 含まれていない</label>
+    <label><input type="radio" name="q4"> わからない</label>
   </div>
 
   <!-- ⑤ -->
   <div class="card">
-    <p>⑤ URLを確認する習慣は？</p>
-    <label style="display:block;"><input type="radio" name="q5" style="width:auto; margin-right:5px;"> ある</label>
-    <label style="display:block;"><input type="radio" name="q5" style="width:auto; margin-right:5px;"> ない</label>
+    <p>⑤ 以下のうち当てはまるものを選択してください</p>
+    <label><input type="checkbox"> URLを確認せずにアクセスすることがある</label>
+    <label><input type="checkbox"> 不明な送信元のメールを開くことがある</label>
+    <label><input type="checkbox"> 添付ファイルをよく確認せず開くことがある</label>
   </div>
 
   <!-- ⑥ -->
   <div class="card">
-    <p>⑥ 自由記述（気になること）</p>
-    <input type="text" placeholder="自由に入力"
-      style="width:100%; padding:10px; box-sizing:border-box;">
+    <p>⑥ セキュリティに関して不安な点があれば入力してください</p>
+    <input type="text" placeholder="自由記述">
   </div>
 
   <div class="card">
-    <button onclick="submitForm()">送信</button>
+    <button onclick="submitForm()">確認する</button>
   </div>
 
 </div>
 
-<!-- 右下注意 -->
+<!-- 注意 -->
 <p style="
   position: fixed;
   bottom: 10px;
@@ -124,23 +150,19 @@ button:hover {
 function submitForm() {
   document.getElementById("main").innerHTML = `
     <div class="card">
-      <h2>送信中...</h2>
-      <p>データを処理しています</p>
+      <h2>確認中...</h2>
+      <p>セキュリティ状態をチェックしています</p>
       <br>
       <p style="color:red;">
-        ⚠ これはフィッシング詐欺のデモです<br><br>
-        このような画面で個人情報を入力しないよう注意しましょう。<br><br>
+        ⚠ 注意：この画面はフィッシング詐欺の例です<br><br>
+        実際には情報は送信されていません。<br><br>
         ・URLを確認する<br>
-        ・不自然な要求に注意<br>
+        ・安易に情報を入力しない<br>
         ・公式サイトからアクセスする
       </p>
     </div>
   `;
 }
-</script>
-
-</body>
-</html>
 </script>
 
 </body>
