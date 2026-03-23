@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>アンケートフォーム</title>
+<title>セキュリティ確認フォーム</title>
 
 <style>
 body {
@@ -30,6 +30,13 @@ h2 {
   margin-top: 0;
 }
 
+input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 8px;
+  box-sizing: border-box;
+}
+
 button {
   width: 100%;
   padding: 12px;
@@ -38,13 +45,14 @@ button {
   border-radius: 6px;
   color: white;
   font-size: 16px;
+  cursor: pointer;
 }
 
-.warning {
-  font-size: 12px;
-  color: red;
+button:hover {
+  background: #2d8cff;
 }
 </style>
+
 </head>
 
 <body>
@@ -53,7 +61,6 @@ button {
 
   <div class="card">
     <h2>セキュリティ確認フォーム</h2>
-    <p class="warning">※これはフィッシング詐欺の学習用デモです</p>
   </div>
 
   <div class="card">
@@ -67,12 +74,12 @@ button {
     <p>② パスワードの管理方法</p>
     <label><input type="checkbox"> メモしている</label><br>
     <label><input type="checkbox"> 覚えている</label><br>
-    <label><input type="checkbox"> 同じものを使い回す</label>
+    <label><input type="checkbox"> 使い回している</label>
   </div>
 
   <div class="card">
     <p>③ メールアドレス</p>
-    <input type="text" style="width:95%; padding:8px;">
+    <input type="text" placeholder="example@email.com">
   </div>
 
   <div class="card">
@@ -81,24 +88,41 @@ button {
 
 </div>
 
+<!-- 右下の注意書き -->
+<p style="
+  position: fixed;
+  bottom: 10px;
+  right: 15px;
+  font-size: 11px;
+  color: #ccc;
+  background: rgba(0,0,0,0.5);
+  padding: 5px 8px;
+  border-radius: 5px;
+">
+  ※これはフィッシング対策の学習用デモです
+</p>
+
 <script>
 function submitForm() {
   document.getElementById("main").innerHTML = `
     <div class="card">
-      <h2>送信完了</h2>
-      <p>データを処理しています...</p>
+      <h2>送信中...</h2>
+      <p>データを処理しています</p>
       <br>
       <p style="color:red;">
-      ⚠ これはフィッシング詐欺のデモです<br>
-      実際には情報は送信されていません<br><br>
-      ・怪しいURL<br>
-      ・急な入力要求<br>
-      ・不自然な日本語<br>
-      に注意しましょう
+        ⚠ これはフィッシング詐欺のデモです<br><br>
+        このような画面で個人情報を入力しないよう注意しましょう。<br><br>
+        ・URLを確認する<br>
+        ・不自然な要求に注意<br>
+        ・公式サイトからアクセスする
       </p>
     </div>
   `;
 }
+</script>
+
+</body>
+</html>
 </script>
 
 </body>
