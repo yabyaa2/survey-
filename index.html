@@ -2,86 +2,103 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>フィッシング詐欺デモ</title>
+<title>アンケートフォーム</title>
 
 <style>
 body {
   margin: 0;
-  height: 100vh;
+  background: #0b1e3c;
+  font-family: sans-serif;
   display: flex;
   justify-content: center;
-  align-items: center;
-  background: #0b1e3c; /* ネイビー */
-  font-family: sans-serif;
-  color: white;
 }
 
-.box {
-  background: #122b57;
-  padding: 30px;
-  border-radius: 12px;
-  width: 300px;
-  text-align: center;
+.container {
+  width: 400px;
+  margin: 40px 0;
 }
 
-input {
-  width: 90%;
-  padding: 10px;
-  margin: 10px 0;
-  border-radius: 6px;
-  border: none;
+.card {
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 15px;
+  color: black;
+}
+
+h2 {
+  margin-top: 0;
 }
 
 button {
   width: 100%;
-  padding: 10px;
+  padding: 12px;
   background: #4da3ff;
   border: none;
   border-radius: 6px;
   color: white;
-  font-weight: bold;
+  font-size: 16px;
 }
 
 .warning {
   font-size: 12px;
-  margin-top: 15px;
-  color: #ffcc00;
+  color: red;
 }
 </style>
 </head>
 
 <body>
 
-<div class="box" id="formBox">
-  <h2>ログイン</h2>
-  
-  <input type="text" placeholder="メールアドレス">
-  <input type="password" placeholder="パスワード">
+<div class="container" id="main">
 
-  <button onclick="showFake()">送信</button>
-
-  <div class="warning">
-    ※これはフィッシング詐欺のデモです（実際には送信されません）
+  <div class="card">
+    <h2>セキュリティ確認フォーム</h2>
+    <p class="warning">※これはフィッシング詐欺の学習用デモです</p>
   </div>
+
+  <div class="card">
+    <p>① よく使うSNSは？</p>
+    <label><input type="radio" name="q1"> Instagram</label><br>
+    <label><input type="radio" name="q1"> X</label><br>
+    <label><input type="radio" name="q1"> TikTok</label>
+  </div>
+
+  <div class="card">
+    <p>② パスワードの管理方法</p>
+    <label><input type="checkbox"> メモしている</label><br>
+    <label><input type="checkbox"> 覚えている</label><br>
+    <label><input type="checkbox"> 同じものを使い回す</label>
+  </div>
+
+  <div class="card">
+    <p>③ メールアドレス</p>
+    <input type="text" style="width:100%; padding:8px;">
+  </div>
+
+  <div class="card">
+    <button onclick="submitForm()">送信</button>
+  </div>
+
 </div>
 
 <script>
-function showFake() {
-  document.getElementById("formBox").innerHTML = `
-    <h2>送信中...</h2>
-    <p>データを処理しています</p>
-    <br>
-    <img src="https://media.giphy.com/media/y1ZBcOGOOtlpC/giphy.gif" width="200">
-    <p style="color:red; margin-top:20px;">
-      ⚠ フィッシング詐欺に注意！<br>
-      このような画面に騙されないように！
-    </p>
+function submitForm() {
+  document.getElementById("main").innerHTML = `
+    <div class="card">
+      <h2>送信完了</h2>
+      <p>データを処理しています...</p>
+      <br>
+      <p style="color:red;">
+      ⚠ これはフィッシング詐欺のデモです<br>
+      実際には情報は送信されていません<br><br>
+      ・怪しいURL<br>
+      ・急な入力要求<br>
+      ・不自然な日本語<br>
+      に注意しましょう
+      </p>
+    </div>
   `;
 }
-</script>
-
-</body>
-</html>
 </script>
 
 </body>
