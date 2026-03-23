@@ -56,6 +56,10 @@ button {
   font-size: 16px;
   cursor: pointer;
 }
+
+button:hover {
+  background: #2d8cff;
+}
 </style>
 
 </head>
@@ -69,38 +73,56 @@ button {
 <div class="container" id="main">
 
   <div class="card">
-    <p>アンケートにご協力ください。</p>
+    <p>以下のアンケートにご協力ください。</p>
   </div>
 
-  <!-- SNS -->
+  <!-- ① SNS -->
   <div class="card">
     <p>① よく利用するSNSは？</p>
     <label><input type="radio" name="q1"> Instagram</label>
-    <label><input type="radio" name="q1"> X</label>
+    <label><input type="radio" name="q1"> X（旧Twitter）</label>
     <label><input type="radio" name="q1"> TikTok</label>
+    <label><input type="radio" name="q1"> LINE</label>
   </div>
 
-  <!-- 時間 -->
+  <!-- ② 時間 -->
   <div class="card">
-    <p>② SNSの利用時間</p>
+    <p>② 1日のSNS利用時間は？</p>
     <label><input type="radio" name="q2"> 1時間未満</label>
-    <label><input type="radio" name="q2"> 1〜3時間</label>
-    <label><input type="radio" name="q2"> 3時間以上</label>
+    <label><input type="radio" name="q2"> 1〜2時間</label>
+    <label><input type="radio" name="q2"> 2〜4時間</label>
+    <label><input type="radio" name="q2"> 4時間以上</label>
   </div>
 
-  <!-- メアド -->
+  <!-- ③ 用途 -->
   <div class="card">
-    <p>③ 結果共有のためメールアドレスを入力してください</p>
+    <p>③ SNSの利用目的</p>
+    <label><input type="checkbox"> 投稿を見る</label>
+    <label><input type="checkbox"> 投稿する</label>
+    <label><input type="checkbox"> メッセージ</label>
+    <label><input type="checkbox"> 情報収集</label>
+  </div>
+
+  <!-- ④ メアド -->
+  <div class="card">
+    <p>④ 結果共有のためメールアドレスを入力してください</p>
     <input type="text" placeholder="example@email.com">
     <p style="font-size:12px; color:gray;">
-      ※結果の共有以外には使用しません（デモ）
+      ※結果の共有以外には使用しません
     </p>
   </div>
 
-  <!-- 感想 -->
+  <!-- ⑤ -->
   <div class="card">
-    <p>④ 感想</p>
-    <input type="text">
+    <p>⑤ SNSでトラブルにあったことは？</p>
+    <label><input type="radio" name="q5"> ある</label>
+    <label><input type="radio" name="q5"> ない</label>
+  </div>
+
+  <!-- ⑥ -->
+  <div class="card">
+    <p>⑥ ご意見・ご感想</p>
+    <input type="text" placeholder="自由にご記入ください">
   </div>
 
   <div class="card">
@@ -109,7 +131,7 @@ button {
 
 </div>
 
-<!-- 注意 -->
+<!-- 右下注意 -->
 <p style="
   position: fixed;
   bottom: 10px;
@@ -127,7 +149,7 @@ button {
 function submitForm() {
   document.body.innerHTML = `
     <div style="
-      height:100vh;
+      min-height:100vh;
       display:flex;
       justify-content:center;
       align-items:center;
@@ -135,23 +157,45 @@ function submitForm() {
       color:white;
       flex-direction:column;
       text-align:center;
+      padding:20px;
     ">
-      <h1 style="color:red; font-size:40px;">
-        ⚠ 注意
-      </h1>
+      <h1 style="color:red; font-size:40px;">⚠ 注意</h1>
+
       <p style="font-size:20px;">
         あなたは個人情報を入力しました
       </p>
+
       <br>
-      <p>
-        このようなフォームでは<br>
-        情報を入力しないようにしましょう
-      </p>
+
+      <div style="
+        background:#111;
+        padding:20px;
+        border-radius:10px;
+        max-width:400px;
+        text-align:left;
+      ">
+        <h3 style="color:#4da3ff;">このフォームの注意点</h3>
+
+        <ul style="line-height:1.8;">
+          <li>メールアドレスの入力を求められた</li>
+          <li>利用目的が十分に説明されていない</li>
+          <li>運営元の情報が記載されていない</li>
+          <li>簡単に個人情報を入力できてしまう構造</li>
+        </ul>
+
+        <h3 style="color:#4da3ff; margin-top:15px;">対策</h3>
+        <ul style="line-height:1.8;">
+          <li>入力前にサイトの信頼性を確認する</li>
+          <li>必要以上の情報は入力しない</li>
+          <li>公式サイトからアクセスする</li>
+          <li>違和感があればすぐに離脱する</li>
+        </ul>
+      </div>
+
       <br>
-      <p style="color:#aaa; font-size:14px;">
-        ・入力前にURLを確認<br>
-        ・不必要な情報要求に注意<br>
-        ・公式サイトからアクセス
+
+      <p style="font-size:14px; color:#aaa;">
+        このページはフィッシング対策の学習用デモです
       </p>
     </div>
   `;
@@ -160,7 +204,6 @@ function submitForm() {
 
 </body>
 </html>
-</script>
 
 </body>
 </html>
