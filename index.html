@@ -30,13 +30,6 @@ h2 {
   margin-top: 0;
 }
 
-input {
-  width: 100%;
-  padding: 10px;
-  margin-top: 8px;
-  box-sizing: border-box;
-}
-
 button {
   width: 100%;
   padding: 12px;
@@ -63,23 +56,48 @@ button:hover {
     <h2>セキュリティ確認フォーム</h2>
   </div>
 
+  <!-- ① -->
   <div class="card">
     <p>① よく使うSNSは？</p>
-    <label><input type="radio" name="q1"> Instagram</label><br>
-    <label><input type="radio" name="q1"> X</label><br>
-    <label><input type="radio" name="q1"> TikTok</label>
+    <label style="display:block;"><input type="radio" name="q1" style="width:auto; margin-right:5px;"> Instagram</label>
+    <label style="display:block;"><input type="radio" name="q1" style="width:auto; margin-right:5px;"> X</label>
+    <label style="display:block;"><input type="radio" name="q1" style="width:auto; margin-right:5px;"> TikTok</label>
   </div>
 
+  <!-- ② -->
   <div class="card">
     <p>② パスワードの管理方法</p>
-    <label><input type="checkbox"> メモしている</label><br>
-    <label><input type="checkbox"> 覚えている</label><br>
-    <label><input type="checkbox"> 使い回している</label>
+    <label style="display:block;"><input type="checkbox" style="width:auto; margin-right:5px;"> メモしている</label>
+    <label style="display:block;"><input type="checkbox" style="width:auto; margin-right:5px;"> 覚えている</label>
+    <label style="display:block;"><input type="checkbox" style="width:auto; margin-right:5px;"> 使い回している</label>
   </div>
 
+  <!-- ③ -->
   <div class="card">
     <p>③ メールアドレス</p>
-    <input type="text" placeholder="example@email.com">
+    <input type="text" placeholder="example@email.com"
+      style="width:100%; padding:10px; box-sizing:border-box;">
+  </div>
+
+  <!-- ④ -->
+  <div class="card">
+    <p>④ 不審なメールを受け取ったことは？</p>
+    <label style="display:block;"><input type="radio" name="q4" style="width:auto; margin-right:5px;"> ある</label>
+    <label style="display:block;"><input type="radio" name="q4" style="width:auto; margin-right:5px;"> ない</label>
+  </div>
+
+  <!-- ⑤ -->
+  <div class="card">
+    <p>⑤ URLを確認する習慣は？</p>
+    <label style="display:block;"><input type="radio" name="q5" style="width:auto; margin-right:5px;"> ある</label>
+    <label style="display:block;"><input type="radio" name="q5" style="width:auto; margin-right:5px;"> ない</label>
+  </div>
+
+  <!-- ⑥ -->
+  <div class="card">
+    <p>⑥ 自由記述（気になること）</p>
+    <input type="text" placeholder="自由に入力"
+      style="width:100%; padding:10px; box-sizing:border-box;">
   </div>
 
   <div class="card">
@@ -88,7 +106,7 @@ button:hover {
 
 </div>
 
-<!-- 右下の注意書き -->
+<!-- 右下注意 -->
 <p style="
   position: fixed;
   bottom: 10px;
