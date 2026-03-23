@@ -1,11 +1,66 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
-  <title>サルワカ</title>
   <meta charset="UTF-8">
+  <title>調査アンケート</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+      background: #f5f5f5;
+    }
+    .box {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 400px;
+    }
+    button {
+      margin-top: 10px;
+    }
+  </style>
 </head>
 <body>
-  <h1>ゼロからウェブデザインを勉強しよう！</h1>
-  <p>まずはHTMLについて学びましょう</p>
+
+<div class="box">
+  <h2>好きな教科は？</h2>
+
+  <label><input type="radio" name="subject" value="数学"> 数学</label><br>
+  <label><input type="radio" name="subject" value="英語"> 英語</label><br>
+  <label><input type="radio" name="subject" value="理科"> 理科</label><br>
+
+  <button onclick="submitAnswer()">送信</button>
+
+  <h3>結果</h3>
+  <p id="result"></p>
+</div>
+
+<script>
+let data = {
+  数学: 0,
+  英語: 0,
+  理科: 0
+};
+
+function submitAnswer() {
+  let selected = document.querySelector('input[name="subject"]:checked');
+  if (!selected) {
+    alert("選択してね");
+    return;
+  }
+
+  data[selected.value]++;
+  displayResult();
+}
+
+function displayResult() {
+  let text = "";
+  for (let key in data) {
+    text += key + "：" + data[key] + "票<br>";
+  }
+  document.getElementById("result").innerHTML = text;
+}
+</script>
+
 </body>
 </html>
