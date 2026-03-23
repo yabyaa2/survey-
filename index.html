@@ -2,54 +2,34 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>ログイン</title>
+<title>重要なお知らせ</title>
 
 <style>
 body {
-  margin: 0;
-  height: 100vh;
+  background: #f5f5f5;
+  font-family: sans-serif;
   display: flex;
   justify-content: center;
-  align-items: center;
-  background: #0b1e3c;
-  font-family: sans-serif;
+  padding-top: 50px;
 }
 
-.box {
+.mail {
   background: white;
-  padding: 30px;
-  border-radius: 12px;
-  width: 320px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  width: 400px;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }
 
-h2 {
-  margin-top: 0;
-  text-align: center;
-}
-
-input {
-  width: 100%;
-  padding: 10px;
-  margin: 10px 0;
-  box-sizing: border-box;
-}
-
-button {
-  width: 100%;
-  padding: 12px;
+.button {
+  display: block;
+  margin-top: 20px;
   background: #4da3ff;
-  border: none;
-  border-radius: 6px;
   color: white;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.small {
-  font-size: 12px;
-  color: gray;
   text-align: center;
+  padding: 10px;
+  border-radius: 6px;
+  text-decoration: none;
 }
 </style>
 
@@ -57,58 +37,21 @@ button {
 
 <body>
 
-<div class="box" id="main">
-  <h2>アカウントログイン</h2>
+<div class="mail">
+  <h3>【重要】アカウントのご確認</h3>
 
-  <input type="text" placeholder="メールアドレス">
-  <input type="password" placeholder="パスワード">
+  <p>
+    平素よりご利用いただきありがとうございます。<br><br>
+    セキュリティ保護のため、アカウント情報の確認が必要です。<br>
+    下記よりログインの上、ご確認ください。
+  </p>
 
-  <button onclick="login()">ログイン</button>
+  <a href="login.html" class="button">確認する</a>
 
-  <p class="small">ログイン状態を保持する</p>
+  <p style="font-size:12px; color:gray; margin-top:20px;">
+    ※本メールに心当たりがない場合は破棄してください
+  </p>
 </div>
-
-<!-- 右下 -->
-<p style="
-  position: fixed;
-  bottom: 10px;
-  right: 15px;
-  font-size: 11px;
-  color: #ccc;
-  background: rgba(0,0,0,0.5);
-  padding: 5px 8px;
-  border-radius: 5px;
-">
-  ※学習用デモ
-</p>
-
-<script>
-function login() {
-
-  // ローディング
-  document.getElementById("main").innerHTML = `
-    <p style="text-align:center;">ログイン中...</p>
-  `;
-
-  setTimeout(() => {
-    document.body.innerHTML = `
-      <div style="
-        height:100vh;
-        display:flex;
-        justify-content:center;
-        align-items:center;
-        background:#f5f5f5;
-        color:black;
-        flex-direction:column;
-        text-align:center;
-      ">
-        <h2>ログインが完了しました</h2>
-        <p>ご利用ありがとうございます。</p>
-      </div>
-    `;
-  }, 800);
-}
-</script>
 
 </body>
 </html>
