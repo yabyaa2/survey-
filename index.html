@@ -2,48 +2,37 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>アンケートフォーム</title>
+<title>ログイン</title>
 
 <style>
 body {
   margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background: #0b1e3c;
   font-family: sans-serif;
 }
 
-.header {
-  background: #122b57;
-  color: white;
-  padding: 15px;
-  text-align: center;
-  font-size: 18px;
-  font-weight: bold;
-}
-
-.container {
-  width: 420px;
-  margin: 30px auto;
-}
-
-.card {
+.box {
   background: white;
-  border-radius: 10px;
-  padding: 20px;
-  margin-bottom: 15px;
-  color: black;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  padding: 30px;
+  border-radius: 12px;
+  width: 320px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
 }
 
-input[type="text"] {
+h2 {
+  margin-top: 0;
+  text-align: center;
+}
+
+input {
   width: 100%;
   padding: 10px;
-  margin-top: 8px;
+  margin: 10px 0;
   box-sizing: border-box;
-}
-
-label {
-  display: block;
-  margin: 6px 0;
 }
 
 button {
@@ -60,78 +49,30 @@ button {
 button:hover {
   background: #2d8cff;
 }
+
+.small {
+  font-size: 12px;
+  color: gray;
+  text-align: center;
+}
 </style>
 
 </head>
 
 <body>
 
-<div class="header">
-  学校アンケート
+<div class="box" id="main">
+  <h2>アカウントログイン</h2>
+
+  <input type="text" placeholder="メールアドレス">
+  <input type="password" placeholder="パスワード">
+
+  <button onclick="login()">ログイン</button>
+
+  <p class="small">ログイン状態を保持する</p>
 </div>
 
-<div class="container" id="main">
-
-  <div class="card">
-    <p>以下のアンケートにご協力ください。</p>
-  </div>
-
-  <!-- ① SNS -->
-  <div class="card">
-    <p>① よく利用するSNSは？</p>
-    <label><input type="radio" name="q1"> Instagram</label>
-    <label><input type="radio" name="q1"> X（旧Twitter）</label>
-    <label><input type="radio" name="q1"> TikTok</label>
-    <label><input type="radio" name="q1"> LINE</label>
-  </div>
-
-  <!-- ② 時間 -->
-  <div class="card">
-    <p>② 1日のSNS利用時間は？</p>
-    <label><input type="radio" name="q2"> 1時間未満</label>
-    <label><input type="radio" name="q2"> 1〜2時間</label>
-    <label><input type="radio" name="q2"> 2〜4時間</label>
-    <label><input type="radio" name="q2"> 4時間以上</label>
-  </div>
-
-  <!-- ③ 用途 -->
-  <div class="card">
-    <p>③ SNSの利用目的</p>
-    <label><input type="checkbox"> 投稿を見る</label>
-    <label><input type="checkbox"> 投稿する</label>
-    <label><input type="checkbox"> メッセージ</label>
-    <label><input type="checkbox"> 情報収集</label>
-  </div>
-
-  <!-- ④ メアド -->
-  <div class="card">
-    <p>④ 結果共有のためメールアドレスを入力してください</p>
-    <input type="text" placeholder="example@email.com">
-    <p style="font-size:12px; color:gray;">
-      ※結果の共有以外には使用しません
-    </p>
-  </div>
-
-  <!-- ⑤ -->
-  <div class="card">
-    <p>⑤ SNSでトラブルにあったことは？</p>
-    <label><input type="radio" name="q5"> ある</label>
-    <label><input type="radio" name="q5"> ない</label>
-  </div>
-
-  <!-- ⑥ -->
-  <div class="card">
-    <p>⑥ ご意見・ご感想</p>
-    <input type="text" placeholder="自由にご記入ください">
-  </div>
-
-  <div class="card">
-    <button onclick="submitForm()">送信</button>
-  </div>
-
-</div>
-
-<!-- 右下注意 -->
+<!-- 右下の控えめ注意 -->
 <p style="
   position: fixed;
   bottom: 10px;
@@ -142,68 +83,39 @@ button:hover {
   padding: 5px 8px;
   border-radius: 5px;
 ">
-  ※これは調査用デモページです
+  ※学習用デモ
 </p>
 
 <script>
-function submitForm() {
-  document.body.innerHTML = `
-    <div style="
-      min-height:100vh;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      background:black;
-      color:white;
-      flex-direction:column;
-      text-align:center;
-      padding:20px;
-    ">
-      <h1 style="color:red; font-size:40px;">⚠ 注意</h1>
+function login() {
 
-      <p style="font-size:20px;">
-        あなたは個人情報を入力しました
-      </p>
-
-      <br>
-
-      <div style="
-        background:#111;
-        padding:20px;
-        border-radius:10px;
-        max-width:400px;
-        text-align:left;
-      ">
-        <h3 style="color:#4da3ff;">このフォームの注意点</h3>
-
-        <ul style="line-height:1.8;">
-          <li>メールアドレスの入力を求められた</li>
-          <li>利用目的が十分に説明されていない</li>
-          <li>運営元の情報が記載されていない</li>
-          <li>簡単に個人情報を入力できてしまう構造</li>
-        </ul>
-
-        <h3 style="color:#4da3ff; margin-top:15px;">対策</h3>
-        <ul style="line-height:1.8;">
-          <li>入力前にサイトの信頼性を確認する</li>
-          <li>必要以上の情報は入力しない</li>
-          <li>公式サイトからアクセスする</li>
-          <li>違和感があればすぐに離脱する</li>
-        </ul>
-      </div>
-
-      <br>
-
-      <p style="font-size:14px; color:#aaa;">
-        このページはフィッシング対策の学習用デモです
-      </p>
-    </div>
+  // 一瞬ローディング表示
+  document.getElementById("main").innerHTML = `
+    <p style="text-align:center;">ログイン中...</p>
   `;
+
+  setTimeout(() => {
+    document.body.innerHTML = `
+      <div style="
+        height:100vh;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        background:black;
+        color:white;
+        flex-direction:column;
+        text-align:center;
+      ">
+        <h1 style="color:red; font-size:40px;">⚠ 注意</h1>
+
+        <p style="font-size:20px;">
+          あなたはログイン情報を入力しました
+        </p>
+      </div>
+    `;
+  }, 800);
 }
 </script>
-
-</body>
-</html>
 
 </body>
 </html>
