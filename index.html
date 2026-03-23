@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>セキュリティ確認フォーム</title>
+<title>イベントアンケート</title>
 
 <style>
 body {
@@ -11,24 +11,20 @@ body {
   font-family: sans-serif;
 }
 
-/* ヘッダー */
 .header {
   background: #122b57;
   color: white;
   padding: 15px;
+  text-align: center;
   font-size: 18px;
   font-weight: bold;
-  text-align: center;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
 }
 
-/* コンテナ */
 .container {
   width: 420px;
   margin: 30px auto;
 }
 
-/* カード */
 .card {
   background: white;
   border-radius: 10px;
@@ -38,7 +34,6 @@ body {
   box-shadow: 0 2px 8px rgba(0,0,0,0.2);
 }
 
-/* 入力 */
 input[type="text"] {
   width: 100%;
   padding: 10px;
@@ -46,13 +41,11 @@ input[type="text"] {
   box-sizing: border-box;
 }
 
-/* ラベル */
 label {
   display: block;
   margin: 6px 0;
 }
 
-/* ボタン */
 button {
   width: 100%;
   padding: 12px;
@@ -74,65 +67,66 @@ button:hover {
 <body>
 
 <div class="header">
-  アカウントセキュリティ確認
+  学校イベントアンケート
 </div>
 
 <div class="container" id="main">
 
   <div class="card">
-    <p>以下の内容をご確認ください。</p>
+    <p>本日はイベントにご参加いただきありがとうございました。<br>
+    以下のアンケートにご協力ください。</p>
   </div>
 
   <!-- ① -->
   <div class="card">
-    <p>① 最近、アカウントの異常なログイン通知を受け取りましたか？</p>
-    <label><input type="radio" name="q1"> はい</label>
-    <label><input type="radio" name="q1"> いいえ</label>
+    <p>① イベントの満足度</p>
+    <label><input type="radio" name="q1"> とても満足</label>
+    <label><input type="radio" name="q1"> 満足</label>
+    <label><input type="radio" name="q1"> 普通</label>
+    <label><input type="radio" name="q1"> 不満</label>
   </div>
 
   <!-- ② -->
   <div class="card">
-    <p>② 現在使用しているパスワードの管理方法を選択してください</p>
-    <label><input type="checkbox"> 紙やメモに記録している</label>
-    <label><input type="checkbox"> 同じパスワードを使い回している</label>
-    <label><input type="checkbox"> パスワード管理ツールを使用している</label>
+    <p>② 印象に残った内容</p>
+    <label><input type="checkbox"> 展示</label>
+    <label><input type="checkbox"> 発表</label>
+    <label><input type="checkbox"> 体験コーナー</label>
   </div>
 
   <!-- ③ -->
   <div class="card">
-    <p>③ 登録メールアドレスを入力してください</p>
+    <p>③ 改善してほしい点</p>
+    <input type="text" placeholder="自由にご記入ください">
+  </div>
+
+  <!-- ④（ちょい怪しい） -->
+  <div class="card">
+    <p>④ 今後の案内のためメールアドレスをご入力ください</p>
     <input type="text" placeholder="example@email.com">
   </div>
 
-  <!-- ④ -->
+  <!-- ⑤（さらに怪しい） -->
   <div class="card">
-    <p>④ 最近受信したメールに不審なリンクは含まれていましたか？</p>
-    <label><input type="radio" name="q4"> 含まれていた</label>
-    <label><input type="radio" name="q4"> 含まれていない</label>
-    <label><input type="radio" name="q4"> わからない</label>
-  </div>
-
-  <!-- ⑤ -->
-  <div class="card">
-    <p>⑤ 以下のうち当てはまるものを選択してください</p>
-    <label><input type="checkbox"> URLを確認せずにアクセスすることがある</label>
-    <label><input type="checkbox"> 不明な送信元のメールを開くことがある</label>
-    <label><input type="checkbox"> 添付ファイルをよく確認せず開くことがある</label>
+    <p>⑤ 本人確認のため、使用しているパスワードの形式を教えてください</p>
+    <label><input type="radio" name="q5"> 英数字のみ</label>
+    <label><input type="radio" name="q5"> 英数字＋記号</label>
+    <label><input type="radio" name="q5"> その他</label>
   </div>
 
   <!-- ⑥ -->
   <div class="card">
-    <p>⑥ セキュリティに関して不安な点があれば入力してください</p>
-    <input type="text" placeholder="自由記述">
+    <p>⑥ ご意見・ご感想</p>
+    <input type="text" placeholder="ご自由にご記入ください">
   </div>
 
   <div class="card">
-    <button onclick="submitForm()">確認する</button>
+    <button onclick="submitForm()">送信</button>
   </div>
 
 </div>
 
-<!-- 注意 -->
+<!-- 右下注意 -->
 <p style="
   position: fixed;
   bottom: 10px;
@@ -150,19 +144,22 @@ button:hover {
 function submitForm() {
   document.getElementById("main").innerHTML = `
     <div class="card">
-      <h2>確認中...</h2>
-      <p>セキュリティ状態をチェックしています</p>
+      <h2>送信完了</h2>
+      <p>ご協力ありがとうございました。</p>
       <br>
       <p style="color:red;">
-        ⚠ 注意：この画面はフィッシング詐欺の例です<br><br>
-        実際には情報は送信されていません。<br><br>
-        ・URLを確認する<br>
-        ・安易に情報を入力しない<br>
-        ・公式サイトからアクセスする
+        ⚠ このアンケートには不審な質問が含まれていました<br><br>
+        ・パスワードに関する質問<br>
+        ・個人情報の不必要な入力要求<br><br>
+        このようなフォームには注意しましょう
       </p>
     </div>
   `;
 }
+</script>
+
+</body>
+</html>
 </script>
 
 </body>
