@@ -1,65 +1,87 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <title>調査アンケート</title>
-  <style>
-    body {
-      font-family: sans-serif;
-      padding: 20px;
-      background: #f5f5f5;
-    }
-    .box {
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-      max-width: 400px;
-    }
-    button {
-      margin-top: 10px;
-    }
-  </style>
+<meta charset="UTF-8">
+<title>フィッシング詐欺デモ</title>
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #0b1e3c; /* ネイビー */
+  font-family: sans-serif;
+  color: white;
+}
+
+.box {
+  background: #122b57;
+  padding: 30px;
+  border-radius: 12px;
+  width: 300px;
+  text-align: center;
+}
+
+input {
+  width: 90%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 6px;
+  border: none;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background: #4da3ff;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-weight: bold;
+}
+
+.warning {
+  font-size: 12px;
+  margin-top: 15px;
+  color: #ffcc00;
+}
+</style>
 </head>
+
 <body>
 
-<div class="box">
-  <h2>好きな教科は？</h2>
+<div class="box" id="formBox">
+  <h2>ログイン</h2>
+  
+  <input type="text" placeholder="メールアドレス">
+  <input type="password" placeholder="パスワード">
 
-  <label><input type="radio" name="subject" value="数学"> 数学</label><br>
-  <label><input type="radio" name="subject" value="英語"> 英語</label><br>
-  <label><input type="radio" name="subject" value="理科"> 理科</label><br>
+  <button onclick="showFake()">送信</button>
 
-  <button onclick="submitAnswer()">送信</button>
-
-  <h3>結果</h3>
-  <p id="result"></p>
+  <div class="warning">
+    ※これはフィッシング詐欺のデモです（実際には送信されません）
+  </div>
 </div>
 
 <script>
-let data = {
-  数学: 0,
-  英語: 0,
-  理科: 0
-};
-
-function submitAnswer() {
-  let selected = document.querySelector('input[name="subject"]:checked');
-  if (!selected) {
-    alert("選択してね");
-    return;
-  }
-
-  data[selected.value]++;
-  displayResult();
+function showFake() {
+  document.getElementById("formBox").innerHTML = `
+    <h2>送信中...</h2>
+    <p>データを処理しています</p>
+    <br>
+    <img src="https://media.giphy.com/media/y1ZBcOGOOtlpC/giphy.gif" width="200">
+    <p style="color:red; margin-top:20px;">
+      ⚠ フィッシング詐欺に注意！<br>
+      このような画面に騙されないように！
+    </p>
+  `;
 }
+</script>
 
-function displayResult() {
-  let text = "";
-  for (let key in data) {
-    text += key + "：" + data[key] + "票<br>";
-  }
-  document.getElementById("result").innerHTML = text;
-}
+</body>
+</html>
 </script>
 
 </body>
